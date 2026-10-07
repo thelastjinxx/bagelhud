@@ -53,6 +53,7 @@ public class FarmRateTracker implements ClientModInitializer {
     private static int lastCount = -1;
     private static int lastChestCount = -1; // chest count the last time you saw it
 
+    private static final KeyBinding.Category CATEGORY = KeyBinding.Category.create(Identifier.of("bagelhud", "main"));
     private static KeyBinding toggleKey;
     private static KeyBinding guiKey;
 
@@ -60,11 +61,11 @@ public class FarmRateTracker implements ClientModInitializer {
     public void onInitializeClient() {
         toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.bagelhud.toggle", InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_J, "category.bagelhud"));
+                GLFW.GLFW_KEY_J, CATEGORY));
 
         guiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.bagelhud.gui", InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_K, "category.bagelhud"));
+                GLFW.GLFW_KEY_K, CATEGORY));
         Config.load();
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -72,7 +73,7 @@ public class FarmRateTracker implements ClientModInitializer {
                 client.setScreen(new TrackerScreen());
             }
             while (toggleKey.wasPressed()) {
-                boolean shift = InputUtil.isKeyPressed(client.getWindow().getHandle(),
+                boolean shift = InputUtil.isKeyPressed(client.getWindow(),
                         GLFW.GLFW_KEY_LEFT_SHIFT);
                 if (shift) reset();
                 else toggle();
