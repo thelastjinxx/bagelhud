@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "bagelhud",
+  "version": "${version}",
+  "name": "BagelHUD",
+  "description": "Client-side HUD that tracks farm rates and money per hour.",
+  "authors": ["thelastjinxx"],
+  "license": "MIT",
+  "icon": "assets/bagelhud/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.bagelhud.FarmRateTracker"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

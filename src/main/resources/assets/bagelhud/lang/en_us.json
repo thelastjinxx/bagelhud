@@ -1,0 +1,5 @@
+{
+  "key.bagelhud.toggle": "Start/Stop Farm Tracker (Shift = reset)",
+  "category.bagelhud": "BagelHUD",
+  "key.bagelhud.gui": "Open BagelHUD Settings"
+}
